@@ -1,0 +1,33 @@
+{
+    "overview": {
+        "jjfNum": 123, "bwfNum": 45, "jjfRcNum": 678,
+        "lxNum": 200, "lfNum": 300, "wsNum": 100,
+        "nationNum": 50, "provinceNum": 60, "cityNum": 70, "countyNum": 80, "townshipNum": 90,
+        "jointNum": 30, "jointNum20": 10,
+        "xfbmsll": "95%", "aqdfl": "90%", "myl": "85%"
+    },
+    "zoneGroupData": [
+        { "name": "银川市", "num": 100, "ratio": "10%", "yoy": "5%" },
+    ],
+    "contentTypeOneData": [
+        { "name": "信访事项A", "num": 60, "ratio": "30%" },
+    ],
+    "jjfZoneData": [
+        { "name": "银川市", "num": 40 },
+    ],
+    "jjfContentTypeOneData": [
+        { "name": "事项X", "num": 20 },
+    ],
+    "takeData": {
+        "total": 75, "firstNum": 50, "repeatNum": 25, "gjNum": 10, "qjNum": 5, "jtfNum": 15, "jdNum": 8, "jjfNum": 30
+    },
+    "timeMarkTitles": {
+        "timeMarkName": "本年来信", "timeMarkName2": "本年来访",
+        "timeMarkName3": "本年网投", "timeMarkTotalName": "本年总量"
+    },
+    "monthGroupData": {
+        "yearName": "2023", "yearList": [{ "mon": "1", "num": 10 }, ],
+        "yearName2": "2024", "yearList2": [{ "mon": "1", "num": 12 }, ],
+        "yearName3": "2025", "yearList3": [{ "mon": "1", "num": 15 },]
+    }
+}

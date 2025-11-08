@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+   <style type="text/css">
+		*{
+			font-family: SongTi;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			font: 13pt;
+		}
+		tbody tr{height:50px}
+		.page {
+			min-height: 20cm;
+			padding: 0.5cm;
+
+		}
+		.page  table{margin:0 auto}
+		@page {
+			size: A4;
+			margin: 0;
+		}
+		@media print {
+			 .page {
+				  margin: 0;
+				  border: initial;
+				  border-radius: initial;
+				  width: 21cm;
+				  min-height: initial;
+				  box-shadow: initial;
+				  background: initial;
+				  page-break-after: always;
+
+			 }
+		 }
+		.tabPrint {border-collapse: collapse;}
+		.tabPrint td
+		{
+      border:#000000 solid 1px;
+      height:21px;
+      padding:2px;
+		}
+		table.tabPrint
+		{
+      border-right:#000000 solid 1px;
+      border-bottom:#000000 solid 1px;
+		}
+
+		.linetd
+		{
+		  border-bottom:solid 1px #000;
+		}
+		#printbody h2{ text-align:center; font-family:HeiTi}
+		.tabPrint .max-height td{ height:100px;}
+		.tabPrint .nowrap{white-space:nowrap;  }
+		.tablesign{ position:relative;height:3.5cm !important;}
+</style>
+  </head>
+  <body id="printbody">
+    <div class="page">
+		<h2>{{title}}</h2>
+		<div style="height:30px;margin:0 auto ">
+			<div style="float:right;text-align:right"></div>
+		</div>
+		<table class="tabPrint" cellSpacing="0" cellPadding="0" border="0" style='width:100%'>
+			<thead>
+				<tr>
+					<th style='width:10%'></th>
+					<th style='width:10%'></th>
+					<th style='width:10%'></th>
+					<th style='width:10%'></th>
+					<th style='width:10%'></th>
+					<th style='width:10%'></th>
+					<th style='width:10%'></th>
+					<th style='width:10%'></th>
+					<th style='width:10%'></th>
+					<th style='width:10%'></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td align="center"  colspan="2"  class="nowrap">包案时间：</td>
+					<td colspan="2"><p>{{petition.leaderTime}}</p></td>
+					<td align="center" colspan="1">包案领导</td>
+					<td colspan="2"><p>{{petition.leaderName}}</p></td>
+					<td align="center" colspan="1">副组长</td>
+					<td colspan="2"><p>{{petition.deputyName}}</p></td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2">来访群各种姓名</td>
+					<td colspan="2"><p>{{petition.letterName}}</p></td>
+					<td colspan="1" align="center">身份证号码</td>
+					<td colspan="5"><p>{{petition.certificateNumber}}</p></td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2">联系方式(手机号码)</td>
+					<td colspan="2">{{petition.mobile}}</td>
+					<td align="center" colspan="1">户籍所在地</td>
+					<td colspan="5">{{petition.familyAddress}}<p></p></td>
+				</tr>
+				<tr align="center" class="max-height">
+					<td colspan="2">群众诉求</td>
+					<td colspan="8" valign="top" align="left">
+						<p>{{petition.complaintContent}}</p>
+					</td>
+				</tr>
+				<tr style='height:120px'>
+					<td align="center" colspan="2">包案组员</td>
+					<td colspan="3"><p>{{petition.teamName}}</p></td>
+					<td colspan="2" align="center">参与单位</td>
+					<td colspan="3"><p>{{petition.juinUnit}}</p></td>
+				</tr>
+				<tr align="center">
+					<td colspan="2">摸排调查</td>
+					<td colspan="8"  class="tablesign" valign="top" align="left">
+						<p>{{petition.examine}}</p>
+					</td>
+				</tr>
+				<tr align="center">
+					<td colspan="2">协调处理情况</td>
+					<td colspan="8" class="tablesign" valign="top" align="left">
+						<p>{{petition.coprocessing}}</p>
+					</td>
+				</tr>
+				<tr align="center">
+					<td colspan="2">督查落实情况</td>
+					<td colspan="8" class="tablesign" valign="top" align="left">
+						<p>{{petition.workable}}</p>
+					</td>
+				</tr>
+				<tr align="center">
+					<td colspan="2">包清情况</td>
+					<td colspan="8" class="tablesign" valign="top" align="left">
+						<p>{{petition.situation}}</p>
+					</td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2">记录人</td>
+					<td  colspan="3">
+						<p></p>
+					</td>
+					<td align="center" colspan="2">日期</td>
+					<td colspan="3">
+						<p></p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+  </body>
+</html>
