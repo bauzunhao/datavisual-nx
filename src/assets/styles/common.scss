@@ -341,6 +341,9 @@
              top: 20px;
          }
      }
+     .subtitle2{
+         background-image: url("../images/subtitle2bg.png") ;
+     }
    .cont{
        font-size: 24px;
        padding: 22px 50px 0;
@@ -442,7 +445,7 @@
        }
      }
 
-       .sectionleft {
+       .sectionleft  {
            width: 450px;
            height: 895px;
            vertical-align: top;
@@ -451,6 +454,16 @@
            position: relative;
            display: inline-block;
            background: linear-gradient( 180deg, rgba(0,61,136,0.3) 0%, rgba(0,29,65,0.1) 51%, rgba(0,61,136,0.3) 100%);
+       }
+       .sectionright{
+           width: 450px;
+           height: 895px;
+           vertical-align: top;
+           border-radius: 10px;
+           position: relative;
+           display: inline-block;
+           background: linear-gradient( 180deg, rgba(0,61,136,0.3) 0%, rgba(0,29,65,0.1) 51%, rgba(0,61,136,0.3) 100%);
+           margin:0 0 0 40px;
        }
    }
  }
