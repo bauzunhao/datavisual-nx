@@ -181,6 +181,11 @@ export const constantRoutes = [
         component: () => import('@/views/datav/datacenter/index'),
         meta: {title: '数据中心'},
         hidden: true
+    },{
+        path: '/datav/legalization',
+        component: () => import('@/views/datav/legalization/index'),
+        meta: {title: '信访工作法治化'},
+        hidden: true
     },
 ]
 
