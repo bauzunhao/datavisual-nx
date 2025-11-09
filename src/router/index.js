@@ -76,7 +76,7 @@ export const constantRoutes = [
     },
     {
         path: '',
-        component: () => import('@/views/navpage'),
+        component: () => import('@/views/datav/homepage/index'),
         hidden: true,
     },
     {
@@ -175,6 +175,11 @@ export const constantRoutes = [
         path: '/datav/efficiency',
         component: () => import('@/views/datav/efficiency/index'),
         meta: {title: '工作质效'},
+        hidden: true
+    },{
+        path: '/datav/datacenter',
+        component: () => import('@/views/datav/datacenter/index'),
+        meta: {title: '数据中心'},
         hidden: true
     },
 ]
