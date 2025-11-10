@@ -2,12 +2,20 @@
   <div class="head">
     <img src="@/assets/images/general-head.png">
       <p>{{currentDateTime}}</p>
+      <div class="nav-bar"  v-if="showTitle">
+          <img class="nav-bar__menu" src="@/assets/images/nav-bar__menu.png"></img>
+          <img class="nav-bar__home" src="@/assets/images/nav-bar__home.png"></img>
+          <div class="nav-bar__system">业务系统</div>
+      </div>
   </div>
 </template>
 
 <script>
     export default {
         name: "DataV-Head",
+        props: {
+            showTitle: { type: Boolean, default: true }
+        },
         data() {
             return {
                 currentDateTime: ""
@@ -77,5 +85,26 @@
         -webkit-text-fill-color: transparent; /* 让文字透明，只显示背景 */
       margin: 0;
     }
+
+      .nav-bar{
+          position: absolute;
+          top: 15px;
+          right: 50px;
+          display: flex;
+          font-size: 16px;
+          color: #FFFFFF;
+          cursor: pointer;
+          line-height: 26px;
+          img{
+              width: 25px;
+              height: 26px;
+              margin-right: 15px;
+          }
+          .nav-bar__system{
+              padding: 3px 15px;
+              background-image: linear-gradient( 0deg, #104e8f 0%, #024389 100%);
+              border-radius: 5px;
+          }
+      }
   }
 </style>

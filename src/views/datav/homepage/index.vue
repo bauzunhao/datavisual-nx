@@ -1,6 +1,6 @@
 <template>
 <div class="home">
-    <DatavHead />
+    <DatavHead :show-title="false" />
     <div class="cont">
         <div class="login-box">
             欢迎登录：<span class="username">{{ username }}</span>
