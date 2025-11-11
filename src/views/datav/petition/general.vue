@@ -581,7 +581,7 @@ export default {
             })
         },
         queryTimeMark(mark){
-            this.$modal.loading("");
+            // this.$modal.loading("");
             this.queryParams.params.timeMark = mark;
             if(1 == mark){
                 this.timeMarkTitles.timeMarkName ="今日来信";

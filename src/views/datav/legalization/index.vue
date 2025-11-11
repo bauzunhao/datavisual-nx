@@ -86,7 +86,9 @@
                     </div>
                 </div>
                 <div class="sectcont">
-                    <div class="genpieChart"></div>
+                    <div class="genpieChart">
+                        <GenpieChart/>
+                    </div>
                     <div class="sectcontlater">
                         <div style="margin-bottom: 10px" class="subtitle subtitle2">
                             <img src="@/assets/images/subtitle-left.png" class="subtitle-left">
@@ -286,9 +288,10 @@
 import * as echarts from 'echarts'
 import DatavHead from '@/components/DatavHead/index.vue'
 import RdwtChart from '@/components/BarChart/index.vue'
+import GenpieChart from '@/components/GenpieChart/index.vue'
 export default {
     name: 'index',
-    components: { RdwtChart, DatavHead },
+    components: { GenpieChart, RdwtChart, DatavHead },
     data(){
         return {
             options1: ['今日', '本月','本年'],

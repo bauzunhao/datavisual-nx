@@ -186,6 +186,16 @@ export const constantRoutes = [
         component: () => import('@/views/datav/legalization/index'),
         meta: {title: '信访工作法治化'},
         hidden: true
+    },{
+        path: '/datav/supervise',
+        component: () => import('@/views/datav/supervise/index'),
+        meta: {title: '集中督办'},
+        hidden: true
+    },{
+        path: '/datav/analysis',
+        component: () => import('@/views/datav/analysis/index.vue'),
+        meta: {title: '大数据分析研判'},
+        hidden: true
     },
 ]
 

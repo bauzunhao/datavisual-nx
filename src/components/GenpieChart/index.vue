@@ -36,7 +36,7 @@ export default {
             }
             var geoCoordMap = {
                 兴庆区: [106.44644, 38.44069],
-                金凤区: [106.18160, 38.34282],
+                金凤区: [106.30000, 38.41061],
                 西夏区: [105.93453, 38.38012],
                 永宁县: [106.23879, 38.21607],
                 贺兰县: [106.30933, 38.51061],
@@ -418,9 +418,9 @@ export default {
     height: 63px;
     margin-left: -10px;
     margin-top: -10px;
-    background-image: url('../../../assets/images/maptooltip.png');
+    background-image: url('../../assets/images/maptooltip.png');
     padding-left: 20px;
-
+    text-align: left;
     p {
         margin: 0;
     }
