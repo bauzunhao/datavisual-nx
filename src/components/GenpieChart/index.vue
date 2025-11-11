@@ -90,13 +90,25 @@ export default {
                     className: 'echarttoop',
                     extraCssText: 'box-shadow: 0 0 0 rgba(0, 0, 0, 0);',
                     formatter: params => {
-                        if (this.viewType == 'threelistView') {
+                        if (!params.data) return ''; // 没数据不显示 tooltip
+                        const d = params.data;
+                        if (this.viewType === 'threelistView') {
                             return `<div class="maptool"><p>` + params.name + `</p><p><span>总量` + params.data.value + `</span><span>减存量` + params.data.stockNum + `</span><span>控增量` + params.data.incrementNum + `</span><span>防变量` + params.data.variableNum + `</span></p></div>`
                         } else if ("emergencyEvent" === this.viewType) {
                             return `<div class="maptool"><p>` + params.name + `</p><p><span>总量` + params.data.value + `</span><span>一级` + params.data.num1 + `</span><span>二级` + params.data.num2 + `</span><span>三级` + params.data.num3
                                 + `</span><span>四级` + params.data.num4 + `</span><span>五级` + params.data.num5 + `</span></p></div>`;
                         } else {
-                            return `<div class="maptool"><p>` + params.name + `</p><p><span>总量` + params.data.value + `</span><span>扬言` + params.data.threaten + `</span><span>集体访` + params.data.jointNum + `</span><span>进京访` + params.data.jjfNum + `</span></p></div>`
+                            return `
+                                    <div class="maptool">
+                                      <p>${params.name}</p>
+                                      <p>
+                                        <span>总量 ${d.value}</span>
+                                        <span>扬言 ${d.threaten}</span>
+                                        <span>集体访 ${d.jointNum}</span>
+                                        <span>进京访 ${d.jjfNum}</span>
+                                      </p>
+                                    </div>
+                                  `;
                         }
                     }
                 },
