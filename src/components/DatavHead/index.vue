@@ -102,7 +102,7 @@
           }
           .nav-bar__system{
               padding: 3px 15px;
-              background-image: linear-gradient( 0deg, #104e8f 0%, #024389 100%);
+              background: linear-gradient(to bottom, #071e45, #0346a2);
               border-radius: 5px;
           }
       }
