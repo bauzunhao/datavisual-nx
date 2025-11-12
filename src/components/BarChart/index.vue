@@ -23,7 +23,8 @@ export default {
         topColor:   { type: String, default: '#2fd7ff' },
         bottomColor:{ type: String, default: '#0a78ff' },
         gradient:   { type: Array,  default: () => ['#1f73e1', '#1ccaf7'] },
-        opacity:    { type: Number, default: 0.6 }
+        opacity:    { type: Number, default: 0.6 },
+        left:    { type: Number, default: 8 },
     },
     data () {
         return {
@@ -64,7 +65,7 @@ export default {
             const { dataName, dataValue, barWidth, symbolSize, topColor, bottomColor, gradient, opacity } = this
             return {
                 tooltip: {},
-                grid: { borderWidth: 0, top: '15%', left: '8%', bottom: '5%', height: '70%', width: '95%' },
+                grid: { borderWidth: 0, top: '15%', left: this.left+'%', bottom: '5%', height: '70%', width: '95%' },
                 xAxis: {
                     type: 'category',
                     data: dataName,

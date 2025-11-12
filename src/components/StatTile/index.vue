@@ -92,10 +92,10 @@ export default {
 
 <style lang="scss" scoped>
 .stat-tile{
-    --c1:#022e62; --c2:#045491;
+    //--c1:#022e62; --c2:#045491;
     display:flex; align-items:center;
     gap:18px;
-    padding:14px 18px;
+    padding:10px 18px;
     border-radius:18px;
 }
 
@@ -103,7 +103,7 @@ export default {
     width:82px; height:82px; border-radius:10px;
     display:flex; align-items:center; justify-content:center;
     background:
-        linear-gradient(180deg, var(--c1), var(--c2));
+        linear-gradient(180deg, #022e62, #045491);
     position:relative;
     overflow:hidden;
     box-shadow: 0 2px 6px rgba(20,180,255,.35);
@@ -129,7 +129,7 @@ export default {
     display:flex; align-items:center; gap:10px;
     white-space: nowrap;
 }
-.label{ color:#a8d4ff; font-size: 16px;}
+.label{ color:#6bb5ff; font-size: 16px;}
 .sep{ color:#7aa3c7; font-size:14px; }
 .yoy{ font-size:14px;  }
 .yoy.up{ color:#34d17a; }
