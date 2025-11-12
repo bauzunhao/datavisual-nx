@@ -70,6 +70,7 @@
                         :data-name="cityNames"
                         :data-value="cityValues"
                         height="320px"
+                        left="3"
                         :bar-width="22"
                     />
                 </div>
