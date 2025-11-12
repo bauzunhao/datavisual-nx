@@ -234,6 +234,7 @@ $sz-font-family: "DSfont";
                 line-height: 91px;
                 color: #ffffff;
                 background: url("../../../assets/images/blnxblue.png") no-repeat;
+                background-size: 100% 100%;
             }
 
             /* 左侧标题 */

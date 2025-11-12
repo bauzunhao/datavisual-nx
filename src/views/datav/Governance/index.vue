@@ -229,7 +229,7 @@ export default {
                         line-height: 110px;
                         color: #ffffff;
                         background: url("../../../assets/images/blnxblue.png") no-repeat center center;
-                        background-size: cover;
+                        background-size: 100% 100%;
                         .descblnx{
                             display: flex;
                             flex-direction: column;
