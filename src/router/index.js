@@ -196,6 +196,11 @@ export const constantRoutes = [
         component: () => import('@/views/datav/analysis/index.vue'),
         meta: {title: '大数据分析研判'},
         hidden: true
+    },{
+        path: '/datav/governance',
+        component: () => import('@/views/datav/Governance/index.vue'),
+        meta: {title: '源头治理分析'},
+        hidden: true
     },
 ]
 
