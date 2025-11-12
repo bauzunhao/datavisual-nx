@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="table-body">
                                     <div class="table-row" v-for="(item, index) in tableData" :key="index">
-                                        <div class="dot" :style="{ backgroundColor: item.color }"></div>
+                                        <div class="dot"></div>
                                         <span class="name">{{ item.name }}</span>
                                         <span class="value">{{ item.value }}</span>
                                         <span class="percent">{{ item.percent }}</span>
@@ -171,14 +171,14 @@ export default {
             options2: ['今日', '本月', '本年'],
             activeIndex2: 0,
             tableData: [
-                { color: '#ff3b3b', name: '劳动关系二级内容', value: 1000, percent: '25%' },
-                { color: '#ffdf33', name: '劳动关系二级内容', value: 1000, percent: '25%' },
-                { color: '#0d72dd', name: '劳动关系二级内容', value: 1000, percent: '25%' },
-                { color: '#0d72dd', name: '劳动关系二级内容', value: 1000, percent: '25%' },
-                { color: '#0d72dd', name: '劳动关系二级内容', value: 1000, percent: '25%' },
-                { color: '#0d72dd', name: '劳动关系二级内容', value: 1000, percent: '25%' },
-                { color: '#0d72dd', name: '劳动关系二级内容', value: 1000, percent: '25%' },
-                { color: '#0d72dd', name: '劳动关系二级内容', value: 1000, percent: '25%' }
+                {  name: '劳动关系二级内容', value: 1000, percent: '25%' },
+                {  name: '劳动关系二级内容', value: 1000, percent: '25%' },
+                {  name: '劳动关系二级内容', value: 1000, percent: '25%' },
+                {  name: '劳动关系二级内容', value: 1000, percent: '25%' },
+                {  name: '劳动关系二级内容', value: 1000, percent: '25%' },
+                {  name: '劳动关系二级内容', value: 1000, percent: '25%' },
+                {  name: '劳动关系二级内容', value: 1000, percent: '25%' },
+                {  name: '劳动关系二级内容', value: 1000, percent: '25%' }
             ],
             names: ['住房公积金','产权交易','土地转让','集体资产管理','大气污染','规划建设','辖区管理','土地转让','集体资产管理','规划建设'],
             values: [720,650,560,430,390,360,1300,260,190,110]
@@ -408,6 +408,7 @@ $sz-font-family: "DSfont";
                                     height: 10px;
                                     position: absolute;
                                     left: -10px;
+                                    background: #0d72dd;
                                 }
                                 .name {
                                     flex: 1;
@@ -422,6 +423,8 @@ $sz-font-family: "DSfont";
                                     text-align: center;
                                 }
                             }
+                            .table-row:first-child { .dot{background: #ff3b3b;} }
+                            .table-row:nth-child(2) { .dot{background: #ffdf33;} }
                         }
                     }
 

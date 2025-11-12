@@ -18,7 +18,7 @@ export default {
         bottomColor:{type: String, default: '#0a78ff' },       // 保留（未用）
         gradient:  { type: Array,  default: () => ['#1f73e1', '#1ccaf7'] }, // 面域渐变
         opacity:   { type: Number, default: 0.6 },
-        left:    { type: Number, default: 8 },
+        left:    { type: String, default: 8 },
     },
     data () {
         return { ec: null, ro: null }

@@ -52,6 +52,7 @@
                         :data-name="names"
                         :data-value="values"
                         height="360px"
+                        left="4"
                         :bar-width="22"
                     />
                 </div>
@@ -111,7 +112,7 @@ export default {
             activeIndex2: 0,
             number: 987654,
             names: ['住房公积金','产权交易','土地转让','集体资产管理','大气污染','规划建设','辖区管理','土地转让','集体资产管理','规划建设'],
-            values: [720,650,560,430,390,360,300,260,190,110],
+            values: [720,650,560,430,390,1360,300,260,190,110],
             dataList: [
                 { label: "信访件办结件次", value: 5860, unit: "件次" },
                 { label: "最长办结时长", value: 60, unit: "小时" },
