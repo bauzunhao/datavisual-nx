@@ -1,6 +1,11 @@
 <template>
     <div class="rank-bars" :style="{ '--bar-height': barHeight + 'px' }">
-        <div class="row" v-for="(it, i) in normalized" :key="i">
+        <div class="row"
+             v-for="(it, i) in normalized"
+             :key="i"
+             :style="{ gridTemplateColumns: `${namewidth}px 1fr 45px` }"
+        >
+            <div v-if="rowicon" class="row-icon" :style="barStyle(it, i)"></div>
             <div class="name" :title="it[nameKey]">{{ it[nameKey] }}</div>
 
             <div class="bar-wrap">
@@ -45,7 +50,9 @@ export default {
             })
         },
         // 是否开启动画
-        animated: { type: Boolean, default: true }
+        animated: { type: Boolean, default: true },
+        rowicon: { type: Boolean, default: false },
+        namewidth: { type: String, default: '85' },
     },
     computed: {
         normalized () {
@@ -127,14 +134,21 @@ export default {
     border-radius: 10px;
 
     .row {
+        position: relative;
         display: grid;
-        grid-template-columns: 85px 1fr 45px;
         align-items: center;
         gap: 10px;
         height: calc(var(--bar-height) + 18px);
         margin: 6px 0;
     }
-
+    .row-icon{
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: 15px;
+        left: -20px;
+        background: var(--c2);
+    }
     .name {
         font-size: 16px;
         white-space: nowrap;

@@ -191,6 +191,12 @@ export default {
         this.ec2.setOption(this.getOption1())
     },
     methods: {
+        handleClick1(i) {
+            this.activeIndex1 = i
+        },
+        handleClick2(i) {
+            this.activeIndex2 = i
+        },
         getOption1 () {
             const option = {
                 backgroundColor: 'transparent',
