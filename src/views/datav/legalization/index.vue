@@ -676,35 +676,6 @@ $sz-font-family: "DSfont";
             }
 
         }
-        .title{
-            position: relative;
-            z-index: 3;
-            margin-bottom: 40px;
-            background: url("../../../assets/images/zongliangbp.png") no-repeat;
-            padding-left: 55px;
-            h4{
-                font-size: 20px;
-                text-align: left;
-                line-height: 1.6;
-            }
-            .titledesc{
-                font-size: 16px;
-                color: #5093d9;
-                display: inline-block;
-                margin-top: 10px;
-            }
-            &::before {
-                content: "";
-                position: absolute;
-                left: 30px;
-                top: 17px;
-                width: 14px;
-                height: 14px;
-                background: linear-gradient(to bottom, #277dd1, #0b3665);
-                transform: translateY(-50%) rotate(45deg); // 居中 + 旋转成菱形
-                border-radius: 2px; // 可选：让边稍圆润
-            }
-        }
         .desc{
             position: absolute;
             top: 8px;
