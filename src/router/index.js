@@ -206,6 +206,11 @@ export const constantRoutes = [
         component: () => import('@/views/datav/keyperson/index.vue'),
         meta: {title: '重点人员'},
         hidden: true
+    },{
+        path: '/datav/inspection',
+        component: () => import('@/views/datav/inspection/index.vue'),
+        meta: {title: '日常督查'},
+        hidden: true
     },
 ]
 
