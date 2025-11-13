@@ -337,8 +337,8 @@ export default {
                 }
 
                 .base-info , .summary-info{
-                    background: linear-gradient(180deg, rgba(0, 61, 136, 0.3) 0%, rgba(0, 29, 65, 0.1) 51%, rgba(0, 61, 136, 0.3) 100%);
-                    transform: perspective(1000px) rotateY(15deg);
+                    background: linear-gradient(180deg, rgba(0, 61, 136, 0.2) 0%, rgba(0, 29, 65, 0.1) 51%, rgba(0, 61, 136, 0.2) 100%);
+                    transform: perspective(1000px) rotateY(10deg);
                     height: 300px;
                     width: 380px;
                     margin-top: 20px;
@@ -355,7 +355,7 @@ export default {
                     }
                 }
                 .summary-info{
-                    transform: perspective(1000px) rotateY(-15deg);
+                    transform: perspective(1000px) rotateY(-10deg);
                 }
             }
             .timelinecont{
