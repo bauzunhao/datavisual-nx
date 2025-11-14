@@ -637,3 +637,34 @@
      }
 
  }
+
+
+ .cont{
+     .el-input__inner{
+         background: linear-gradient(to bottom, #061c42, #002973);
+         border: 1px solid #3096f6;
+         color: #6bb5ff;
+         &::placeholder {
+             color: #6bb5ff;
+         }
+
+     }
+     .minidate{
+         .el-input__inner{
+             vertical-align: top;
+
+             .el-input__icon{
+                 color: #6bb5ff;
+             }
+             .el-range-input{
+                 background: #06347f;
+                 color: #6bb5ff;
+             }
+             .el-range-separator{
+                 color: #6bb5ff;
+             }
+         }
+     }
+
+
+ }

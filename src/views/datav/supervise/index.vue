@@ -180,6 +180,7 @@ export default {
                 display: flex;
                 color: #6bb5ff;
                 height: 26px;
+                align-items: center;
                 .seg-wrap{
                     margin-right: 30px;
                 }
@@ -370,29 +371,5 @@ export default {
             }
         }
     }
-}
-</style>
-<style  lang="scss">
-.cont{
-    .minidate{
-        .el-input__inner{
-            vertical-align: top;
-
-            background: #01306f;
-            border: 1px solid #3096f6;
-            .el-input__icon{
-                color: #6bb5ff;
-            }
-            .el-range-input{
-                background: #06347f;
-                color: #6bb5ff;
-            }
-            .el-range-separator{
-                color: #6bb5ff;
-            }
-        }
-    }
-
-
 }
 </style>
