@@ -173,7 +173,9 @@
                         <img src="@/assets/images/subtitle-left.png" class="subtitle-left">
                         <h3>四、监督追责法治化</h3>
                         <div class="sectenter">
-                            <p>进入 <span>▶</span></p>
+                            <router-link to="/datav/LawSupervise">
+                                <p>进入 <span>▶</span></p>
+                            </router-link>
                         </div>
                     </div>
                     <div style="margin-bottom: 0" class="title"> <h4>自治区信访局督办</h4>
