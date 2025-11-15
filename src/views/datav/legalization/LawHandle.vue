@@ -108,6 +108,62 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
+            <div style="display: inline-block;width: 450px;vertical-align: top;">
+                <div class="sectionright">
+                    <div class="subtitle">
+                        <img src="@/assets/images/subtitle-left.png" class="subtitle-left">
+                        <h3>其它途径办理情况 前五项展示</h3>
+                    </div>
+                    <ul class="proc-list">
+                        <li class="proc-item" v-for="item in proclist" :key="item.id">
+                            <!-- 左：类型 -->
+                            <div class="proc-type">{{ item.type }}</div>
+
+                            <!-- 中：总量 -->
+                            <div class="proc-total">
+                                总量<span class="num">{{ item.total }} 件次</span>
+                            </div>
+                            <!-- 右：重复信访 + 化解率 -->
+                            <div class="proc-extra">
+                                <p>办结重复信访 <span class="num green">{{ item.repeat }}次</span></p>
+                                <p>化解率 <span class="num yellow">{{ item.rate }}%</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sectionright" style="margin-top: 25px">
+                    <div class="subtitle">
+                        <img src="@/assets/images/subtitle-left.png" class="subtitle-left">
+                        <h3>涉法涉诉办理情况</h3>
+                    </div>
+                    <ul class="dept-list">
+                        <li class="dept-item" v-for="item in deptlist" :key="item.id">
+                            <!-- 左：机构名称 -->
+                            <div class="dept-name">{{ item.name }}</div>
+
+                            <!-- 右：统计 -->
+                            <div class="dept-stats">
+                                <p>
+                                    一审 <span class="g">{{ item.yishen }}次</span>
+                                    占比 <span class="y"> {{ item.yishen_rate }}%</span>
+                                </p>
+                                <p>
+                                    再审 <span class="g">{{ item.zaishen }}次</span>
+                                    占比 <span class="y"> {{ item.zaishen_rate }}%</span>
+                                </p>
+                                <p>
+                                    不复核再审 <span class="g">{{ item.nofh }}次</span>
+                                    占比 <span class="y"> {{ item.nofh_rate }}%</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -130,6 +186,18 @@ export default {
           number: 21345,
           names: ['住房公积金','产权交易','土地转让','集体资产管理','大气污染'],
           values: [720,650,560,430,390],
+          proclist: [
+              { id: 1, type: '涉法涉诉', total: 1, repeat: 3, rate: 4 },
+              { id: 2, type: '仲裁', total: 1, repeat: 3, rate: 4 },
+              { id: 3, type: '党员申诉', total: 1231, repeat: 3, rate: 4 },
+              { id: 4, type: '行政', total: 1, repeat: 3, rate: 4 },
+              { id: 5, type: '依法履职', total: 1, repeat: 3, rate: 4 }
+          ],
+          deptlist : [
+              { id: 1, name: '审判机关', yishen: 1, yishen_rate: 2, zaishen: 2, zaishen_rate: 1, nofh: 3, nofh_rate: 8 },
+              { id: 2, name: '公安机关', yishen: 1, yishen_rate: 2, zaishen: 2, zaishen_rate: 1, nofh: 3, nofh_rate: 8 },
+              { id: 3, name: '检察机关', yishen: 1, yishen_rate: 2, zaishen: 2, zaishen_rate: 1, nofh: 3, nofh_rate: 8 }
+          ]
       }
     },
     mounted() {
@@ -255,7 +323,7 @@ export default {
                     {
                         name: '调解情况',
                         type: 'pie',
-                        radius: [100, 125],
+                        radius: [100, 123],
                         center: ['50%', '40%'],
                         startAngle: 0,
                         clockwise: true,
@@ -449,6 +517,114 @@ export default {
                     border-radius: 10px;
                 }
             }
+        }
+        .sectionright{
+            height: auto;
+            .proc-list {
+                margin: 0;
+                list-style: none;
+                padding: 0 25px;
+            }
+
+            .proc-item {
+                position: relative;
+                margin-bottom: 12px;
+                padding: 7px 20px;
+                overflow: hidden;
+                background: url("../../../assets/images/blnxblue.png") no-repeat center center;
+                background-size: 100% 100%;
+
+                // ⭐ 每行用 grid：左中右三列
+                display: grid;
+                grid-template-columns: 85px 1fr 140px;
+                column-gap: 10px;
+                align-items: center;
+                color: #6bb5ff;
+
+            }
+
+            /* 左：类型 */
+            .proc-type {
+                font-size: 16px;
+                text-align: center;
+            }
+
+            /* 中：总量 */
+            .proc-total {
+                font-size: 16px;
+
+                .num {
+                    margin: 0 4px;
+                    font-size: 16px;
+                    color: #cfe8ff;
+
+                }
+            }
+
+            /* 右：重复信访 + 化解率 */
+            .proc-extra {
+                text-align: right;
+                font-size: 14px;
+                color: #6bb5ff;
+                line-height: 1.6;
+                p{margin: 0;}
+
+                .num {
+                    font-weight: 600;
+                    &.green {
+                        color: #2fe7bf;
+                    }
+                    &.yellow {
+                        color: #ffd95c;
+                    }
+                }
+            }
+
+            .dept-list {
+                margin: 0;
+                list-style: none;
+                padding: 0 25px;
+            }
+
+            .dept-item {
+                position: relative;
+                padding: 15px 28px;
+                margin-bottom: 8px;
+                background: url("../../../assets/images/blnxblue.png") no-repeat center center;
+                background-size: 100% 100%;
+                overflow: hidden;
+
+                /* 一行左右布局 */
+                display: grid;
+                grid-template-columns: 80px 1fr;
+                align-items: center;
+                color: #6bb5ff;
+
+            }
+
+            .dept-name {
+                font-size: 16px;
+            }
+
+            .dept-stats {
+                text-align: right;
+                font-size: 14px;
+                color: #6bb5ff;
+
+                p {
+                    margin: 4px 0;
+                }
+
+                .g {
+                    color: #2fe7bf;
+                    padding-right: 4px;
+                }
+
+                .y {
+                    color: #ffd95c;
+                }
+            }
+
         }
     }
 }
