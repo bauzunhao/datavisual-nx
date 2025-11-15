@@ -216,6 +216,11 @@ export const constantRoutes = [
         component: () => import('@/views/datav/efficiency/unitEfficiency.vue'),
         meta: {title: '责任单位质效'},
         hidden: true
+    },{
+        path: '/datav/LawHandle',
+        component: () => import('@/views/datav/legalization/LawHandle.vue'),
+        meta: {title: '办理法治化'},
+        hidden: true
     },
 ]
 

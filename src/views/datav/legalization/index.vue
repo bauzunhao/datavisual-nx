@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section_left">
+                    <div class="section_left" style="height: 435px;">
                         <div class="subtitle">
                             <img src="@/assets/images/subtitle-left.png" class="subtitle-left" alt="">
                             <h3>二、受理法治化</h3>
@@ -94,7 +94,7 @@
                             <img src="@/assets/images/subtitle-left.png" class="subtitle-left">
                             <h3>三、办理法治化</h3>
                             <div class="sectenter">
-                                <p>进入 <span>▶</span></p>
+                                <router-link to="/datav/LawHandle"> <p>进入 <span>▶</span></p></router-link>
                             </div>
                         </div>
                         <div style="margin-bottom: 18px;" class="title"> <h4>办理情况</h4></div>
@@ -459,7 +459,7 @@ $sz-font-family: "DSfont";
                 }
                 .gauge-item {
                     width: 200px;
-                    height: 75px;
+                    height: 80px;
                     .chart {
                         width: 100%;
                         height: 100%;
