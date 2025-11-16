@@ -66,7 +66,7 @@ export default {
             const { dataName, dataValue, barWidth, symbolSize, topColor, bottomColor, gradient, opacity , showLabel  } = this
             return {
                 tooltip: {},
-                grid: { borderWidth: 0, top: '15%', left: this.left+'%', bottom: '5%', height: '70%', width: '95%' },
+                grid: { borderWidth: 0, top: '8%', left: this.left+'%', bottom: '5%', height: '70%', width: '95%' },
                 xAxis: {
                     type: 'category',
                     data: dataName,

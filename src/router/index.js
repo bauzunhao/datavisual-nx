@@ -226,6 +226,11 @@ export const constantRoutes = [
         component: () => import('@/views/datav/legalization/LawSupervise.vue'),
         meta: {title: '监督追责法治化'},
         hidden: true
+    },{
+        path: '/datav/LawAccept',
+        component: () => import('@/views/datav/legalization/LawAccept.vue'),
+        meta: {title: '受理法治化'},
+        hidden: true
     },
 ]
 

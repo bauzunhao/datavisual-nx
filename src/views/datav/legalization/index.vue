@@ -55,7 +55,9 @@
                             <img src="@/assets/images/subtitle-left.png" class="subtitle-left" alt="">
                             <h3>二、受理法治化</h3>
                             <div class="sectenter">
-                                <p>进入 <span>▶</span></p>
+                                <router-link to="/datav/LawAccept">
+                                    <p>进入 <span>▶</span></p>
+                                </router-link>
                             </div>
                         </div>
                         <div class="slfzh">
