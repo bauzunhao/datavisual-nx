@@ -123,6 +123,7 @@
                         left="3"
                         height="260px"
                         :bar-width="22"
+                        :showLabel =  "true"
                     />
                 </div>
             </div>

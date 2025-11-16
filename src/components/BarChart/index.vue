@@ -25,6 +25,7 @@ export default {
         gradient:   { type: Array,  default: () => ['#1f73e1', '#1ccaf7'] },
         opacity:    { type: Number, default: 0.6 },
         left:    { type: String, default: '8' },
+        showLabel: { type: Boolean, default: false   }// 默认不显示
     },
     data () {
         return {
@@ -62,7 +63,7 @@ export default {
     },
     methods: {
         getOption () {
-            const { dataName, dataValue, barWidth, symbolSize, topColor, bottomColor, gradient, opacity } = this
+            const { dataName, dataValue, barWidth, symbolSize, topColor, bottomColor, gradient, opacity , showLabel  } = this
             return {
                 tooltip: {},
                 grid: { borderWidth: 0, top: '15%', left: this.left+'%', bottom: '5%', height: '70%', width: '95%' },
@@ -71,7 +72,7 @@ export default {
                     data: dataName,
                     axisLine: { lineStyle: { color: 'rgba(120,200,255,.4)' } },
                     axisTick: { show: false },
-                    axisLabel: { color: '#79bfff', fontSize: 12, margin: 12 }
+                    axisLabel: { color: '#ffffff', fontSize: 12, margin: 12 }
                 },
                 yAxis: {
                     type: 'value',
@@ -87,7 +88,14 @@ export default {
                         symbolOffset: [0, -5],
                         symbolPosition: 'end',
                         z: 12,
-                        label: { normal: { show: true, position: 'top', color: '#fff' } },
+                        // label 动态根据 showLabel 显示/隐藏
+                        label: {
+                            normal: {
+                                show: showLabel,
+                                position: 'top',
+                                color: '#fff'
+                            }
+                        },
                         data: dataValue,
                         itemStyle: { color: topColor, opacity }
                     },

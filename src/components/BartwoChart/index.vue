@@ -107,7 +107,7 @@ export default {
                     data: dataName,
                     axisLine: { lineStyle: { color: 'rgba(120,200,255,.4)' } },
                     axisTick: { show: false },
-                    axisLabel: { color: '#79bfff', fontSize: 12, margin: 12 }
+                    axisLabel: { color: '#ffffff', fontSize: 12, margin: 12 }
                 },
                 yAxis: {
                     type: 'value',
