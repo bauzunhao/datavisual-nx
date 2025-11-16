@@ -94,7 +94,7 @@
                                 <tr>
                                     <th style="width: 220px;">督办类型（{{ tableData.length }}项）</th>
                                     <th style="width: 420px;">具体情形（{{ totalItems }}项）</th>
-                                    <th style="width: 80px;">件次</th>
+                                    <th style="width: 50px;">件次</th>
                                     <th style="width: 120px;">数量和占比</th>
                                 </tr>
                                 </thead>
@@ -117,7 +117,7 @@
                                         <td>{{ item.name }}</td>
 
                                         <!-- 件次 -->
-                                        <td>{{ item.count }}</td>
+                                        <td class="cell-summary">{{ item.count }}</td>
 
                                         <!-- 右边合计：只在每组第一行显示 + rowspan 合并 -->
                                         <td
@@ -291,7 +291,6 @@ export default {
         }
         .sectionleft{
             .duty-panel {
-                // 整体背景可以根据你的大屏背景来调整
                 width: 100%;
                 padding: 20px 40px 20px 0;
                 box-sizing: border-box;
@@ -433,7 +432,6 @@ export default {
                 .legend-wrap {
                     display: flex;
                     align-items: center;
-                    // 和图之间的间距自己调
                     margin-bottom: 8px;
                     font-size: 14px;
                     position: absolute;

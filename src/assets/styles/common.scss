@@ -644,11 +644,16 @@
          background: linear-gradient(to bottom, #061c42, #002973);
          border: 1px solid #3096f6;
          color: #6bb5ff;
+         height: 25px;
+         line-height: 25px;
          &::placeholder {
              color: #6bb5ff;
          }
-
      }
+    .el-select__caret , .el-input__icon.el-icon-date {
+         line-height: 25px;
+     }
+
      .minidate{
          .el-input__inner{
              vertical-align: top;

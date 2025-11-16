@@ -244,7 +244,9 @@
                         <img src="@/assets/images/subtitle-left.png" class="subtitle-left">
                         <h3>五、维护秩序法治化</h3>
                         <div class="sectenter">
-                            <p>进入 <span>▶</span></p>
+                            <router-link to="/datav/LawOrder">
+                                <p>进入 <span>▶</span></p>
+                            </router-link>
                         </div>
                     </div>
                     <div style="margin-bottom: 0" class="title"> <h4>自治区信访局教育疏导情况</h4>

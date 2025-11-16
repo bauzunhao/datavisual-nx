@@ -50,7 +50,7 @@
                             />
                         </div>
                     </div>
-                    <div class="section_left">
+                    <div class="section_left" style="height: 445px">
                         <div class="subtitle">
                             <img src="@/assets/images/subtitle-left.png" class="subtitle-left" alt="">
                             <h3>信访形式与目的</h3>

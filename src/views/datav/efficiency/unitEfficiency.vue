@@ -17,19 +17,17 @@
                     </div>
                 </div>
                 <p>去向地区:</p>
-                <div style="margin-right: 30px;">
-                    <el-select v-model="value" placeholder="请选择"  size ="mini">
-                        <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
+                <el-select v-model="value" placeholder="请选择"  size ="mini">
+                    <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
 
-                        >
-                        </el-option>
-                    </el-select>
-                </div>
-                <p>限办日期:</p>
+                    >
+                    </el-option>
+                </el-select>
+                <p style="margin-left: 30px;">限办日期:</p>
                 <el-date-picker
                     v-model="value1"
                     type="date"

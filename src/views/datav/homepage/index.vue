@@ -224,7 +224,7 @@ export default {
         getOption1 () {
             const img = require('@/assets/images/leftlist2chartbp_03.png')
 
-            const option = {
+            return {
                 backgroundColor: 'transparent',
                 toolbox: { show: true },
 
@@ -232,7 +232,7 @@ export default {
                     text: '占比',
                     left: 'center',
                     top: '35%',
-                    textStyle: { color: '#ffffff', fontSize: 28,  }
+                    textStyle: { color: '#ffffff', fontSize: 28, }
                 },
 
                 legend: {
@@ -240,7 +240,7 @@ export default {
                     icon: 'circle',
                     itemWidth: 10, itemHeight: 10,
                     textStyle: { color: '#6bb5ff', fontSize: 16 },
-                    data: ['来信','来访','网上信访']
+                    data: ['来信', '来访', '网上信访']
                 },
 
                 tooltip: {
@@ -266,7 +266,7 @@ export default {
                         name: '信访形式',
                         type: 'pie',
                         radius: [65, 80],
-                        center: ['50%','40%'],
+                        center: ['50%', '40%'],
                         startAngle: 0,
                         clockwise: true,
                         // ECharts 5 支持，做圆角端点
@@ -348,8 +348,6 @@ export default {
                     }
                 ]
             }
-
-            return option
         },
     }
 }
