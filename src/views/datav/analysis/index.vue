@@ -33,13 +33,19 @@
                 </div>
                 <div class="butlist">
                     <div class="but-itme">
-                        <p>信息预警</p>
+                        <router-link to="/datav/Warning">
+                            <p>信息预警</p>
+                        </router-link>
                     </div>
                     <div class="but-itme">
-                        <p>热词分析</p>
+                        <router-link to="/datav/Hotwords">
+                            <p>热词分析</p>
+                        </router-link>
                     </div>
                     <div class="but-itme">
-                        <p>分析报告</p>
+                        <router-link to="/datav/Report">
+                            <p>分析报告</p>
+                        </router-link>
                     </div>
                 </div>
             </div>

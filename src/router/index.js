@@ -241,6 +241,21 @@ export const constantRoutes = [
         component: () => import('@/views/datav/legalization/LawPrevent.vue'),
         meta: {title: '预防法治化'},
         hidden: true
+    },{
+        path: '/datav/Hotwords',
+        component: () => import('@/views/datav/analysis/Hotwords.vue'),
+        meta: {title: '热词分析'},
+        hidden: true
+    },{
+        path: '/datav/Warning',
+        component: () => import('@/views/datav/analysis/Warning.vue'),
+        meta: {title: '信息预警'},
+        hidden: true
+    },{
+        path: '/datav/Report',
+        component: () => import('@/views/datav/analysis/Report.vue'),
+        meta: {title: '分析报告'},
+        hidden: true
     },
 ]
 
