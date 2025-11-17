@@ -130,7 +130,7 @@
                     <h3>全区信访量情况</h3>
                 </div>
                 <div class="genpieChart">
-                    <GenpieChart/>
+                    <genpie-chart :enableClick="true" />
                 </div>
                 <div class="title" style="margin-bottom: 0;margin-top: -40px;"> <h4>办理情况</h4></div>
                 <div style="padding: 0 25px;">

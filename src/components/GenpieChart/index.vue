@@ -1,7 +1,128 @@
 <template>
-    <div ref="mapchart"  style="width:100%;height:100%;">
+    <div style="width:100%;height:100%;">
+        <div ref="mapchart" style="width:100%;height:100%;"></div>
+
+        <!-- ElementUI 弹框 -->
+        <el-dialog
+            :visible.sync="dialogVisible"
+            :show-close="false"
+            width="1300px"
+        >
+            <div class="subtitle subtitle2" >
+                <img src="@/assets/images/subtitle-left.png" class="subtitle-left">
+                <h3>{{ currentArea.name }}
+                    <span @click="dialogVisible = false" class="dialog-close">X</span>
+                </h3>
+            </div>
+            <div class="visit-container">
+
+                <el-table
+                    :data="tableData"
+                    style="width: 100%;"
+                    row-key="id"
+                    class="visit-table"
+                >
+                    <!-- 左侧可展开列 -->
+                    <el-table-column type="expand" width="40">
+                        <template slot-scope="props">
+                            <!-- 这里就是展开后的内容 -->
+                            <div class="expand-content">
+                                <template>
+                                    <div class="steps">
+                                        <div
+                                            v-for="(item, index) in steps"
+                                            :key="index"
+                                            class="step-item"
+                                        >
+                                            <!-- 圆点 -->
+                                            <div
+                                                class="step-circle"
+                                                :class="{
+                                                          active: index + 1 === current,
+                                                          passed: index + 1 < current
+                                                        }"
+                                            >
+                                                <span>{{ index + 1 }}</span>
+
+                                                <!-- 当前步骤的外圈效果 -->
+                                                <div
+                                                    v-if="index + 1 === current"
+                                                    class="step-circle-ring"
+                                                ></div>
+                                            </div>
+
+                                            <!-- 步骤文本 -->
+                                            <div class="step-label">
+                                                {{ item }}
+                                            </div>
+
+                                            <!-- 线段（最后一个不显示） -->
+                                            <div
+                                                v-if="index < steps.length - 1"
+                                                class="step-line"
+                                                :class="{
+                                                          passed: index + 1 < current,
+                                                          active: index + 1 === current
+                                                        }"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template>
+                                    <div class="history-list">
+                                        <div
+                                            class="history-item"
+                                            v-for="(item, index) in historyList"
+                                            :key="index"
+                                        >
+                                            <!-- 日期 -->
+                                            <div class="history-date">
+                                                {{ item.date }}
+                                            </div>
+
+                                            <p class="history-row">
+                                                {{ item.prefix1 }}
+                                                <span class="highlight">{{ item.highlight1 }}</span>
+                                                {{ item.suffix1 }}
+                                            </p>
+                                            <p class="history-row">
+                                                {{ item.prefix2 }}
+                                                <span class="highlight" v-if="item.highlight2">{{ item.highlight2 }}</span>
+                                                {{ item.suffix2 }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </template>
+
+
+                            </div>
+                        </template>
+                    </el-table-column>
+
+
+                    <el-table-column prop="name" label="姓名" width="50" />
+                    <el-table-column prop="code" label="信访件编号" width="150" />
+                    <el-table-column prop="date" label="登记日期" width="120" />
+                    <el-table-column prop="type" label="信访形式" width="80" />
+                    <el-table-column prop="purpose" label="信访目的" width="80" />
+                    <el-table-column prop="toCity" label="去向" width="100" />
+                    <el-table-column prop="addr" label="住址" width="120" />
+                    <el-table-column prop="cat" label="内容分类" width="140" />
+                    <el-table-column prop="summary" label="概括信息"  />
+                    <el-table-column prop="phone" label="信访人联系方式" width="120"/>
+                </el-table>
+
+                <div class="block">
+                    <el-pagination
+                        layout="prev, pager, next"
+                        :total="1000">
+                    </el-pagination>
+                </div>
+            </div>
+        </el-dialog>
     </div>
 </template>
+
 
 <script>
 import * as echarts from 'echarts';
@@ -10,6 +131,25 @@ import {loopShowTooltip} from '@/utils/echarts-tooltip-carousel';
 
 export default {
     name: "genpieChart",
+    props: {
+        enableClick: {
+            type: Boolean,
+            default: false   // 默认不开启
+        },
+        current: { type: Number, default: 4 }, // 当前步骤
+        steps: {
+            type: Array,
+            default: () => [
+                "登记受理",
+                "已转责任单位",
+                "处理阶段",
+                "审核阶段",
+                "办结阶段",
+                "归档"
+            ]
+        },
+    },
+
     data() {
         return {
             timerChart: null,  // 定时器名称
@@ -22,6 +162,98 @@ export default {
                 { name: '永宁县',  num: 10, threatenNum: 0, jointNum: 0, jjfNum: 0 },
                 { name: '贺兰县',  num: 9,  threatenNum: 0, jointNum: 0, jjfNum: 0 },
                 { name: '灵武市',  num: 6,  threatenNum: 0, jointNum: 0, jjfNum: 0 },
+            ],
+
+            mapechart: null,          // 保存图表实例
+            dialogVisible: false,     // 弹框显隐
+            currentArea: {},          // 当前点击区域的数据
+            tableData: [
+                {
+                    id: 1,
+                    name: '张三',
+                    code: '500000001890',
+                    date: '2025-10-05',
+                    type: '来访',
+                    purpose: '求决',
+                    toCity: '拉萨市',
+                    addr: '城关区',
+                    cat: '拖欠农民工工资',
+                    summary: '概括信息概括信息概括信息……',
+                    phone: '13888888888'
+                },
+               {
+                    id: 2,
+                    name: '张三',
+                    code: '500000001890',
+                    date: '2025-10-05',
+                    type: '来访',
+                    purpose: '求决',
+                    toCity: '拉萨市',
+                    addr: '城关区',
+                    cat: '拖欠农民工工资',
+                    summary: '概括信息概括信息概括信息……',
+                    phone: '13888888888'
+                },
+               {
+                    id: 3,
+                    name: '张三',
+                    code: '500000001890',
+                    date: '2025-10-05',
+                    type: '来访',
+                    purpose: '求决',
+                    toCity: '拉萨市',
+                    addr: '城关区',
+                    cat: '拖欠农民工工资',
+                    summary: '概括信息概括信息概括信息……',
+                    phone: '13888888888'
+                },
+               {
+                    id: 4,
+                    name: '张三',
+                    code: '500000001890',
+                    date: '2025-10-05',
+                    type: '来访',
+                    purpose: '求决',
+                    toCity: '拉萨市',
+                    addr: '城关区',
+                    cat: '拖欠农民工工资',
+                    summary: '概括信息概括信息概括信息……',
+                    phone: '13888888888'
+                },
+               {
+                    id: 5,
+                    name: '张三',
+                    code: '500000001890',
+                    date: '2025-10-05',
+                    type: '来访',
+                    purpose: '求决',
+                    toCity: '拉萨市',
+                    addr: '城关区',
+                    cat: '拖欠农民工工资',
+                    summary: '概括信息概括信息概括信息……',
+                    phone: '13888888888'
+                },
+
+            ],
+            historyList: [
+                {
+                    date: '2023-06-30',
+                    prefix1: '城关区信访局 ',
+                    highlight1: '张三登记',
+                    suffix1: '',
+                    prefix2: '告知信访人内容显示',
+                    highlight2: '',
+                    suffix2: ''
+                },
+                {
+                    date: '2023-06-30',
+                    prefix1: '直接转送',
+                    highlight1: '县住建局',
+                    suffix1: '',
+                    prefix2: '办理意见内容显示，办理意见内容显示，办理意见内容显示，办理意见内容显示',
+                    highlight2: '',
+                    suffix2: ''
+                }
             ]
 
         }
@@ -31,6 +263,9 @@ export default {
     },
     methods: {
         initmap() {
+
+
+
             if (this.timerChart) {
                 this.timerChart.clearLoop();
             }
@@ -379,10 +614,23 @@ export default {
 
                 ]
             }
-            let mapechart = echarts.init(this.$refs.mapchart);
-            mapechart.setOption(option);
+            // 保存到 this 上，方便其他方法用
+            this.mapechart = echarts.init(this.$refs.mapchart);
+            this.mapechart.setOption(option);
 
-            this.exceHighlight(mapechart, option)
+            this.exceHighlight(this.mapechart, option);
+
+            // ⭐ 给地图加点击事件（只有父组件允许时）
+            if (this.enableClick) {
+                this.mapechart.off('click');
+                this.mapechart.on('click', (params) => {
+                    if (params.componentType === 'series' && params.seriesType === 'map') {
+                        this.handleAreaClick(params);
+                    }
+                });
+            }
+
+
 
             // 动态计算柱形图的高度（定一个max）
             function lineMaxHeight() {
@@ -417,6 +665,27 @@ export default {
             }
 
         },
+
+        handleAreaClick(params) {
+            // params.name 就是区域名字，比如 "兴庆区"
+            const areaName = params.name;
+
+            // 从 message 里找到这条数据（你也可以用 params.data 直接用）
+            const areaData = this.message.find(item => item.name === areaName) || {};
+
+            this.currentArea = {
+                name: areaName,
+                ...areaData,
+                // 也可以把 tooltip 里那些字段带上
+                value: params.data && params.data.value,
+                threaten: params.data && params.data.threaten,
+                jointNum: params.data && params.data.jointNum,
+                jjfNum: params.data && params.data.jjfNum,
+            };
+
+            this.dialogVisible = true; // 打开弹框
+        },
+
         exceHighlight(chart, chartOption, options) {
             this.timerChart = loopShowTooltip(chart, chartOption, options);
         },
@@ -451,5 +720,283 @@ export default {
 
 .echarttoop {
     z-index: 9 !important;
+}
+.el-dialog{
+    .el-dialog__header{display: none;}
+    background: rgba(5, 24, 55, 0.9);
+    .el-dialog__body{
+        padding: 0;
+        border-radius: 10px;
+        background: linear-gradient(180deg, rgba(0, 61, 136, 0.3) 0%, rgba(0, 29, 65, 0.1) 51%, rgba(0, 61, 136, 0.3) 100%);
+        h3{width: calc(100% - 55px);}
+        .dialog-close{
+            float: right;
+            margin-right: 25px;
+            cursor: pointer;
+        }
+        .visit-container{
+            padding: 0 25px;
+            max-height: 550px;
+            overflow: auto;
+        }
+        .visit-table::before{
+            height: 0;
+        }
+        .visit-table {
+            // 隐藏原来的小图标
+            .el-table__expand-icon > i {
+                display: none;
+            }
+            .expand-content {
+                height: 200px;
+                overflow: auto;
+                padding: 10px 50px;
+                color: #fff;
+                font-size: 14px;
+                background-color: rgba(2, 21, 48, 0.7);
+                border-radius: 10px;
+
+            }
+            .el-table__expanded-cell{
+                background: #071934;
+            }
+
+            // 默认状态：指向右侧的小三角
+            .el-table__expand-icon {
+                position: relative;
+                width: 0;
+                height: 0;
+                border-top: 6px solid transparent;
+                border-bottom: 6px solid transparent;
+                border-left: 10px solid #ffd800; // 黄色
+                margin-left: 10px;
+                cursor: pointer;
+            }
+
+            // 展开后：旋转成向下的小三角
+            .el-table__expand-icon--expanded {
+                transform: rotate(90deg);
+            }
+
+            .has-gutter tr,th{
+                background: #0a3e7a;
+                color: #fff;
+                border: 0;
+            }
+            .el-table__row td,tr{
+                color: #6bb5ff;
+            }
+        }
+
+        .visit-table {
+            // 隐藏原来的小图标
+            .el-table__expand-icon > i {
+                display: none;
+            }
+
+            // 默认状态：指向右侧的小三角
+            .el-table__expand-icon {
+                position: relative;
+                width: 0;
+                height: 0;
+                border-top: 6px solid transparent;
+                border-bottom: 6px solid transparent;
+                border-left: 10px solid #ffd800; // 黄色
+                margin-left: 10px;
+                cursor: pointer;
+            }
+
+            // 展开后：旋转成向下的小三角
+            .el-table__expand-icon--expanded {
+                transform: rotate(90deg);
+            }
+        }
+
+        .visit-table {
+            // 隐藏原来的小图标
+            .el-table__expand-icon > i {
+                display: none;
+            }
+
+            // 默认状态：指向右侧的小三角
+            .el-table__expand-icon {
+                position: relative;
+                width: 0;
+                height: 0;
+                border-top: 6px solid transparent;
+                border-bottom: 6px solid transparent;
+                border-left: 10px solid #ffd800; // 黄色
+                margin-left: 10px;
+                cursor: pointer;
+            }
+
+            // 展开后：旋转成向下的小三角
+            .el-table__expand-icon--expanded {
+                transform: rotate(90deg);
+            }
+        }
+
+        .steps {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            margin-top: 10px;
+
+            .step-item {
+                display: flex;
+                align-items: center;
+                position: relative;
+                flex: 1;
+
+            }
+
+            .step-circle {
+                width: 34px;
+                height: 34px;
+                background: #7a7a7a; // 默认灰
+                color: #fff;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                z-index: 2;
+                font-size: 16px;
+
+                &.passed {
+                    background: #00aaff;
+                }
+
+                &.active {
+                    background: #00aaff;
+                }
+
+                .step-circle-ring {
+                    position: absolute;
+                    width: 46px;
+                    height: 46px;
+                    border-radius: 50%;
+                    border: 6px solid rgba(0, 170, 255, 0.2);
+                    top: -6px;
+                    left: -6px;
+                }
+            }
+
+            .step-label {
+                font-size: 14px;
+                color: #fff;
+                position: absolute;
+                top: 40px;
+                width: 120px;
+                left: -40px;
+                text-align: center;
+            }
+
+            .step-line {
+                flex: 1;
+                height: 3px;
+                background: #7a7a7a;
+                margin-left: 10px;
+                margin-right: 10px;
+
+                &.passed {
+                    background: #00aaff;
+                }
+
+                &.active {
+                    border-top: 3px dashed #00aaff;
+                    background: none;
+                }
+            }
+        }
+
+        .el-table,
+        .el-table th,
+        .el-table td {
+            border: none !important;
+        }
+
+        .el-table::before {
+            display: none !important; /* 左边第一条竖线 */
+        }
+
+        .el-table__body-wrapper::before {
+            display: none !important; /* 顶部那条线 */
+        }
+
+        .el-table__row {
+            border: none !important;
+        }
+        .el-table tr {background: transparent;}
+        .el-table td,
+        .el-table th.is-leaf {
+            background: transparent !important;
+        }
+        .el-table , .visit-container {background: transparent;}
+        .el-table__body tr:hover > td {
+            background-color: transparent !important; /* 取消 hover 灰背景 */
+        }
+
+        .history-list {
+            padding: 10px 0;
+            color: #ffffff;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+
+        .history-item {
+            display: flex;
+            padding: 4px 0;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .history-date {
+            width: 120px;
+            flex-shrink: 0;
+        }
+
+
+        .history-row {
+            margin: 0;
+            line-height: 1.8;
+            color: #6bb5ff;
+        }
+
+        .highlight {
+            color: #ffd94a;
+        }
+
+        .visit-container{
+            .block{
+                padding: 20px 0;
+                text-align: right;
+                .el-pagination{
+                    color: #6bb5ff;
+                    .active{
+                        background: #2e73a8;
+                        color: #fff;
+                    }
+                }
+                .btn-prev , .btn-next{
+                    background: #0c3b71;
+                    color: #6bb5ff;
+                    border-radius: 3px;
+                    margin: 0 5px;
+                    padding: 0 6px;
+                }
+                .el-pager li{
+                    background: #0c3b71;
+                    border-radius: 3px;
+                    margin: 0 5px;
+                }
+                .el-icon-more{
+                    color: #6bb5ff;
+                }
+
+            }
+        }
+    }
 }
 </style>
