@@ -37,9 +37,11 @@
                         <div class="subtitle">
                             <img src="@/assets/images/subtitle-left.png" class="subtitle-left" alt="">
                             <h3>一、预防法治化</h3>
-                            <div class="sectenter">
-                                <p>进入 <span>▶</span></p>
-                            </div>
+                            <router-link to="/datav/LawPrevent">
+                                <div class="sectenter">
+                                    <p>进入 <span>▶</span></p>
+                                </div>
+                            </router-link>
                         </div>
                         <div class="seleftlist">
                             <div class="title"> <h4>报送信访工作法治化相关材料7件次</h4></div>
