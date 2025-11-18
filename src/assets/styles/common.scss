@@ -673,3 +673,32 @@
 
 
  }
+
+
+ .maptool {
+     width: 348px;
+     height: 63px;
+     margin-left: -10px;
+     margin-top: -10px;
+     background-image: url('../../assets/images/maptooltip.png');
+     padding-left: 20px;
+     text-align: left;
+     p {
+         margin: 0;
+     }
+
+     p:nth-child(2) {
+         font-size: 14px;
+         margin: 0;
+         color: #00afff;
+         margin-top: 3px;
+
+         span {
+             margin-right: 10px;
+         }
+     }
+ }
+
+ .echarttoop {
+     z-index: 9 !important;
+ }

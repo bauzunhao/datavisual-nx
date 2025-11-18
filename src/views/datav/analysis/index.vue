@@ -588,6 +588,55 @@ $sz-font-family: "DSfont";
     }
 
     .visit-dialog ::v-deep .el-dialog {
+        box-sizing: border-box !important;
+    }
+    .visit-dialog ::v-deep .el-dialog{
+        .el-dialog__header{display: none;}
+        background: rgba(5, 24, 55, 0.9);
+        .el-dialog__body{
+            padding: 0;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(0, 61, 136, 0.3) 0%, rgba(0, 29, 65, 0.1) 51%, rgba(0, 61, 136, 0.3) 100%);
+            h3{width: calc(100% - 55px);}
+            .dialog-close{
+                float: right;
+                margin-right: 25px;
+                cursor: pointer;
+            }
+
+
+
+            .el-table,
+            .el-table th,
+            .el-table td {
+                border: none !important;
+            }
+
+            .el-table::before {
+                display: none !important; /* 左边第一条竖线 */
+            }
+
+            .el-table__body-wrapper::before {
+                display: none !important; /* 顶部那条线 */
+            }
+
+            .el-table__row {
+                border: none !important;
+            }
+            .el-table tr {background: transparent;}
+            .el-table td,
+            .el-table th.is-leaf {
+                background: transparent !important;
+            }
+            .el-table , .visit-container {background: transparent;}
+            .el-table__body tr:hover > td {
+                background-color: transparent !important; /* 取消 hover 灰背景 */
+            }
+
+        }
+    }
+
+    .visit-dialog ::v-deep .el-dialog {
         .case-panel {
             display: flex;
             padding: 10px 35px;

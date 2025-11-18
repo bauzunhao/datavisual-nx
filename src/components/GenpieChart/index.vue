@@ -3,7 +3,8 @@
         <div ref="mapchart" style="width:100%;height:100%;"></div>
 
         <!-- ElementUI 弹框 -->
-        <el-dialog
+        <div class="visit-dialog">
+         <el-dialog
             :visible.sync="dialogVisible"
             :show-close="false"
             width="1300px"
@@ -126,6 +127,7 @@
                 </div>
             </div>
         </el-dialog>
+        </div>
     </div>
 </template>
 
@@ -320,7 +322,7 @@ export default {
                 // backgroundColor: '#131C38',
                 tooltip: {
                     trigger: 'item',
-                    show: true,
+                    show: false,
                     enterable: true,
                     textStyle: {
                         fontSize: 20,
@@ -699,38 +701,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.maptool {
-    width: 348px;
-    height: 63px;
-    margin-left: -10px;
-    margin-top: -10px;
-    background-image: url('../../assets/images/maptooltip.png');
-    padding-left: 20px;
-    text-align: left;
-    p {
-        margin: 0;
-    }
+<style scoped lang="scss">
 
-    p:nth-child(2) {
-        font-size: 14px;
-        margin: 0;
-        color: #00afff;
-        margin-top: 3px;
-
-        span {
-            margin-right: 10px;
-        }
-    }
-}
-
-.echarttoop {
-    z-index: 9 !important;
-}
-.el-dialog {
+.visit-dialog ::v-deep .el-dialog {
     box-sizing: border-box !important;
 }
-.el-dialog{
+.visit-dialog ::v-deep .el-dialog{
     .el-dialog__header{display: none;}
     background: rgba(5, 24, 55, 0.9);
     .el-dialog__body{

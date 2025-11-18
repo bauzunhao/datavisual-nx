@@ -256,6 +256,21 @@ export const constantRoutes = [
         component: () => import('@/views/datav/analysis/Report.vue'),
         meta: {title: '分析报告'},
         hidden: true
+    },{
+        path: '/datav/topic',
+        component: () => import('@/views/datav/topic/index.vue'),
+        meta: {title: '信访专题'},
+        hidden: true
+    },{
+        path: '/datav/TopicTemplate',
+        component: () => import('@/views/datav/topic/TopicTemplate.vue'),
+        meta: {title: '信访专题_专题模板'},
+        hidden: true
+    },{
+        path: '/datav/Topsearch',
+        component: () => import('@/views/datav/topic/Topsearch.vue'),
+        meta: {title: '信访专题_信访智能搜索'},
+        hidden: true
     },
 ]
 
