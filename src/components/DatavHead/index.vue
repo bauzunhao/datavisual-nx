@@ -3,8 +3,8 @@
     <img src="@/assets/images/general-head.png">
       <p>{{currentDateTime}}</p>
       <div class="nav-bar"  v-if="showTitle">
-          <img class="nav-bar__menu" src="@/assets/images/nav-bar__menu.png"></img>
-          <img class="nav-bar__home" src="@/assets/images/nav-bar__home.png"></img>
+          <img class="nav-bar__menu" src="@/assets/images/nav-bar__menu.png"/>
+          <router-link to="/"><img class="nav-bar__home" src="@/assets/images/nav-bar__home.png"/></router-link>
           <div class="nav-bar__system">业务系统</div>
       </div>
   </div>

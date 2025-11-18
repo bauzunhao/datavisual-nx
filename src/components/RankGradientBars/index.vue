@@ -3,21 +3,19 @@
         <div class="row"
              v-for="(it, i) in normalized"
              :key="i"
-             :style="{ gridTemplateColumns: `${namewidth}px 1fr 45px` }"
+             :style="{ gridTemplateColumns: `${namewidth}px 1fr 45px ${it.unit ? ' 45px' : ''}`}"
         >
             <div v-if="rowicon" class="row-icon" :style="barStyle(it, i)"></div>
             <div class="name" :title="it[nameKey]">{{ it[nameKey] }}</div>
 
             <div class="bar-wrap">
-                <!-- 背景网格/底座 -->
-<!--                <div class="bar-bg"></div>-->
-
-                <!-- 实际进度条 -->
                 <div
                     class="bar"
                     :style="barStyle(it, i)"
                 ></div>
             </div>
+
+            <div class="unit" v-if="it.unit">{{ it.unit }}</div>
 
             <div class="val">{{ it._percent }}%</div>
         </div>
@@ -145,7 +143,7 @@ export default {
         position: absolute;
         width: 10px;
         height: 10px;
-        top: 15px;
+        top: 12px;
         left: -20px;
         background: var(--c2);
     }
@@ -162,7 +160,11 @@ export default {
         color: #6bb5ff;
         text-align: right;
     }
-
+    .unit{
+        font-size: 14px;
+        color: #6bb5ff;
+        text-align: right;
+    }
     .bar-wrap {
         position: relative;
         height: var(--bar-height);
