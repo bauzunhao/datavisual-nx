@@ -10,7 +10,10 @@
                              :key="idx">
                     <div class="topic-item">
                             <div class="topic-item-icon">
-
+                                <img
+                                    class="icon"
+                                    :src="require(`@/assets/images/topic-item-icon${idx+1}.png`)"
+                                />
                             </div>
                             <p>{{ item }}</p>
                     </div>
@@ -19,7 +22,7 @@
                 <router-link to="/datav/Topsearch">
                     <div class="topic-item">
                         <div class="topic-item-icon">
-
+                            <img class="icon" src="../../../assets/images/topic-item-icon12.png" alt="">
                         </div>
                         <p>信访智能搜索</p>
                     </div>
@@ -88,26 +91,36 @@ export default {
                 height: 95px;
                 display: flex;
                 .topic-item-icon{
+                    margin-left: 35px;
                     height: 100%;
-                    width: 60px;
+                    width: 65px;
+                    position: relative;
+                    overflow: hidden;
                 }
                 p{
-                    padding-left: 120px;
+                    padding-left: 95px;
                     font-size: 26px;
                     font-weight: bold;
                     background: linear-gradient(to bottom, #fdfeff, #a1d4ff);
                     -webkit-background-clip: text;   /* 背景裁剪成文字形状 */
                     -webkit-text-fill-color: transparent; /* 让文字透明，只显示背景 */
                 }
+                .icon{
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                }
                 &:hover {
                     transform: translateY(-2px);
-                    box-shadow: 0 0 5px rgba(0,120,255,0.4);
                     cursor: pointer;
                     background: url("../../../assets/images/topic-item-active.png") no-repeat;
                     p{
                         background: linear-gradient(to bottom, #fff9d1, #ffed75);
                         -webkit-background-clip: text;   /* 背景裁剪成文字形状 */
                         -webkit-text-fill-color: transparent; /* 让文字透明，只显示背景 */
+                    }
+                    .icon{
+                       left: -80px;
                     }
                 }
 
