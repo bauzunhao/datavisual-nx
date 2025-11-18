@@ -23,7 +23,7 @@
                     class="visit-table"
                 >
                     <!-- 左侧可展开列 -->
-                    <el-table-column type="expand" width="40">
+                    <el-table-column type="expand" width="30">
                         <template slot-scope="props">
                             <!-- 这里就是展开后的内容 -->
                             <div class="expand-content">
@@ -101,7 +101,7 @@
 
 
                     <el-table-column prop="name" label="姓名" width="50" />
-                    <el-table-column prop="code" label="信访件编号" width="150" />
+                    <el-table-column prop="code" label="信访件编号" width="130" />
                     <el-table-column prop="date" label="登记日期" width="120" />
                     <el-table-column prop="type" label="信访形式" width="80" />
                     <el-table-column prop="purpose" label="信访目的" width="80" />
@@ -109,7 +109,13 @@
                     <el-table-column prop="addr" label="住址" width="120" />
                     <el-table-column prop="cat" label="内容分类" width="140" />
                     <el-table-column prop="summary" label="概括信息"  />
-                    <el-table-column prop="phone" label="信访人联系方式" width="120"/>
+                    <el-table-column label="信访人联系方式" width="120">
+                        <template slot-scope="scope">
+                            <span class="phone-cell">
+                              {{ scope.row.phone }}
+                            </span>
+                        </template>
+                    </el-table-column>
                 </el-table>
 
                 <div class="block">
@@ -721,6 +727,9 @@ export default {
 .echarttoop {
     z-index: 9 !important;
 }
+.el-dialog {
+    box-sizing: border-box !important;
+}
 .el-dialog{
     .el-dialog__header{display: none;}
     background: rgba(5, 24, 55, 0.9);
@@ -834,6 +843,16 @@ export default {
             .el-table__expand-icon--expanded {
                 transform: rotate(90deg);
             }
+            .phone-cell {
+                color: #ffd94a;
+                cursor: pointer;
+
+                &:hover {
+                    color: #fff;
+                    text-decoration: underline;
+                }
+            }
+
         }
 
         .steps {
