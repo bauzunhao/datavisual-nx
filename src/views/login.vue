@@ -286,17 +286,17 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+      height: 100vh;
+      overflow: auto;
     background-image: url("../assets/images/login-background.jpg");
     background-size: 100% 100%;
   }
 
   .login-head {
-    width: 40%;
-    margin-top: 7%;
+      margin-top: 5vh;
 
     img {
-      width: 100%;
+        height: 10vh;
     }
   }
 
@@ -373,6 +373,7 @@
 
       img {
         width: 100%;
+          height: 50vh;
       }
         .login-show-shadow{
             position: absolute;
