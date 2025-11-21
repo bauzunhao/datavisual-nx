@@ -322,7 +322,7 @@ export default {
                 // backgroundColor: '#131C38',
                 tooltip: {
                     trigger: 'item',
-                    show: false,
+                    show: true,
                     enterable: true,
                     textStyle: {
                         fontSize: 20,
@@ -334,25 +334,14 @@ export default {
                     extraCssText: 'box-shadow: 0 0 0 rgba(0, 0, 0, 0);',
                     formatter: params => {
                         if (!params.data) return ''; // 没数据不显示 tooltip
-                        const d = params.data;
-                        if (this.viewType === 'threelistView') {
-                            return `<div class="maptool"><p>` + params.name + `</p><p><span>总量` + params.data.value + `</span><span>减存量` + params.data.stockNum + `</span><span>控增量` + params.data.incrementNum + `</span><span>防变量` + params.data.variableNum + `</span></p></div>`
-                        } else if ("emergencyEvent" === this.viewType) {
-                            return `<div class="maptool"><p>` + params.name + `</p><p><span>总量` + params.data.value + `</span><span>一级` + params.data.num1 + `</span><span>二级` + params.data.num2 + `</span><span>三级` + params.data.num3
-                                + `</span><span>四级` + params.data.num4 + `</span><span>五级` + params.data.num5 + `</span></p></div>`;
-                        } else {
-                            return `
+                        return `
                                     <div class="maptool">
                                       <p>${params.name}</p>
-                                      <p>
-                                        <span>总量 ${d.value}</span>
-                                        <span>扬言 ${d.threaten}</span>
-                                        <span>集体访 ${d.jointNum}</span>
-                                        <span>进京访 ${d.jjfNum}</span>
-                                      </p>
+                                      <div class="maptool-desc">
+                                        <p>已汇报数 <span>17%</span></p>
+                                       </div>
                                     </div>
                                   `;
-                        }
                     }
                 },
                 grid: {
